@@ -1,0 +1,22 @@
+<table n:if="$student->getLernedTasks()">
+    <thead>
+	<tr>
+	    <th>Lekce</th>
+	    <th>Úkoly</th>
+	</tr>
+    </thead>
+    <tbody>
+	{foreach $student->getLernedTasks() as $key => $lerned}
+	    <tr>
+		<td>{$lerned["lesson"]->getName()}</td>
+		<td></td>
+	    </tr>
+	    {foreach $lerned["tasks"] as $task}
+		<tr>
+		    <td></td>
+		    <td>{$task->getDescription()}</td>
+		</tr>
+	    {/foreach}
+	{/foreach}
+    </tbody>
+</table>

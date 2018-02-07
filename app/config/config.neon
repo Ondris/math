@@ -1,0 +1,28 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+services:
+	router: App\RouterFactory::createRouter
+	authenticator: MyAuthenticator
+
+	- \Model\LessonsModel
+	- \Model\TasksModel
+	- \Model\StepsModel
+	- \Model\UsersModel
+	- \Model\UsersStepsModel
+
+	- ILessonFormFactory
+	- ITaskFormFactory
+	- IStepFormFactory
+	- IRegistrationFormFactory
+	- ILoginFormFactory

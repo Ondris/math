@@ -1,0 +1,13 @@
+{block content}
+<div id="banner">
+	<h1 n:block=title>Administrace úloh</h1>
+</div>
+
+<div id="content">
+	<h4>{$task->getDescription()}</h4>
+	<h2 n:if="$step">Krok číslo {$step->getOrder()}</h2>
+
+	{control stepForm}
+	
+	<a n:href="default">Zpět</a>
+</div>

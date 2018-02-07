@@ -1,0 +1,25 @@
+{block content}
+<div id="banner">
+	<h1 n:block=title>Administrace</h1>
+</div>
+
+<div id="content">
+	<h2>Seznam uživatelů</h2>
+
+	<ul n:foreach="$students as $student">
+	    <li>
+		{$student->getName()} 
+		{if $student->getVisible()}
+		    <a n:href="changeVisible! userId => $student->getId(), visible => \Model\User::INVISIBLE">Deaktivovat</a>
+		{else}
+		    <a n:href="changeVisible! userId => $student->getId(), visible => \Model\User::VISIBLE">Aktivovat</a>
+		{/if}
+		<br>
+		
+		<p>Naučené lekce<p>
+		
+		{include "../Blocks/usersLessons.latte" student => $student}
+	    </li>
+	</ul>
+			    
+</div>

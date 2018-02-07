@@ -1,0 +1,21 @@
+{block content}
+<header class="jumbotron my-4">
+    <h1 class="display-3" n:block=title>{$lesson->getName()}</h1>
+    <p class="lead">{$lesson->getDescription()}</p>
+</header>
+
+<div class="row text-center">
+    <div class="col-lg-3 col-md-6 mb-4" n:foreach="$lesson->getTasks() as $task">
+	<div class="card">
+	    <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+	    <div class="card-body">
+		<h4 class="card-title">{$task->getId()}</h4>
+		<p class="card-text">{$task->getDescription()}</p>
+            </div>
+            <div class="card-footer">
+		<a n:href="task $task->getId()" class="btn btn-primary">Start!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<a n:href="default">Zpět</a>

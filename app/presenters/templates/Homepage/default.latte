@@ -1,0 +1,21 @@
+{block content}
+<header class="jumbotron my-4">
+    <h1 class="display-3" n:block="title">Naučte se matematiku</h1>
+    <p class="lead">Máte strach z maturitní zkoušky z matematiky. Již nemusíte. Přinášíme vám ideální a jednoduchý postup jak se připravit na 
+	maturitu krok po kroku.</p>
+    <a href="#" class="btn btn-primary btn-lg">Pojď do toho!</a>
+</header>
+
+<div class="row text-center">
+    <div class="col-lg-3 col-md-6 mb-4" n:foreach="$lessons as $lesson">
+	<div class="card">
+            <div class="card-body">
+		<h4 class="card-title">{$lesson->getName()}</h4>
+		<p class="card-text">{$lesson->getDescription()|noescape}</p>
+            </div>
+            <div class="card-footer">
+		<a n:href="lesson $lesson->getId()" class="btn btn-primary">Spustit lekci!</a>
+            </div>
+        </div>
+    </div>
+</div>

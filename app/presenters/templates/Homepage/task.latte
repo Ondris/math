@@ -1,0 +1,32 @@
+{block content}
+<div id="banner">
+	<h1 n:block=title>Probíhá výuka</h1>
+</div>
+
+<div id="content">
+	<h3>{$task->getDescription()}</h3>
+	{snippet ajaxChange}
+
+	    {foreach $task->getSteps($numberOfSteps) as $step}
+		<div class="col-sm-9">
+		    <p class="text-danger">{$step->getQuestion()|noescape}<p>
+		    <p class="text-info" n:if="$numberOfSteps - 1 == $iterator->getCounter()">{$result|noescape}</p>
+		</div>
+		<hr>
+	    {/foreach}
+	    
+	    <form n:name="answerForm" class="form" n:if="$task->countSteps() >= $numberOfSteps">
+		<p><label n:name="answer">Odpověď: <input n:name="answer" size=40></label></p>
+		<p><input n:name="numberOfSteps" value="{$numberOfSteps}"></p>
+		<p><input n:name="send" class="btn btn-default"></p>
+	    </form>
+
+	{/snippet}
+
+	<a n:href="lesson $task->getLessonId()">Zpět</a>
+	<a n:href="default">Konec výuky</a>
+</div>
+	
+<script>
+
+</script>

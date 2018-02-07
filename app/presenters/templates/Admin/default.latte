@@ -1,0 +1,33 @@
+{block content}
+<div id="banner">
+	<h1 n:block=title>Administrace</h1>
+</div>
+
+<div id="content">
+	<h2>Seznam testů</h2>
+
+	<ul n:foreach="$lessons as $lesson">
+	    <li>
+		<a n:href="Homepage:lesson $lesson->getId()">{$lesson->getName()}</a><a n:href="editLesson $lesson->getId()">[edit]</a>
+		<p class="showTask">+</p>
+		
+		<ul class="task">
+		    <li n:foreach="$lesson->getTasks() as $task">
+			{$task->getDescription()}<a n:href="editTask $lesson->getId(), $task->getId()">[edit]</a>
+			
+			<ul>
+			    <li n:foreach="$task->getSteps() as $step">
+				{$step->getOrder()}<a n:href="editStep $task->getId(), $step->getId()">[edit]</a>
+			    </li>
+			    <li><a n:href="editStep $task->getId()">Přidat krok</a></li>
+			</ul>
+			    
+		    </li>
+		    <li><a n:href="editTask $lesson->getId()">Přidat úlohu</a></li>
+		</ul> 
+	    </li>
+	</ul>
+			    
+	<a n:href="editLesson">Přidat lekci</a>
+			    
+</div>

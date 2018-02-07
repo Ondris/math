@@ -1,0 +1,12 @@
+{block content}
+<div id="banner">
+	<h1 n:block=title>Administrace</h1>
+</div>
+
+<div id="content">
+	<h2>{if $lesson} {$lesson->getName()} {else} Přidat lekci {/if}</h2>
+
+	{control lessonForm}
+	
+	<a n:href="default">Zpět</a>
+</div>
